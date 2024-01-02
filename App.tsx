@@ -1,12 +1,12 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
+import Tabs from "./src/components/Tabs";
+import { MatchProvider } from "./src/context/MatchContext";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>FOOTY PALZZZZ</Text>
-      <StatusBar style="auto" />
-    </View>
+    <MatchProvider>
+      <Tabs />
+    </MatchProvider>
   );
 }
 
