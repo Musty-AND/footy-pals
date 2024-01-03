@@ -15,16 +15,18 @@ const HomeScreen = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [content, setContent] = useState("");
 
-  // console.log("date from homepage", date);
-
-  const applicableDates = date
+  const filteredChoice = date
     ? matches.filter((match) => match.date === dayjs(date).format("YYYY-MM-DD"))
     : matches;
 
-  const searchedTerm = matches.filter((match) =>
-    match.location.includes(content)
+  console.log("Filtered Choices", filteredChoice);
+
+  const newMatches = filteredChoice.filter((newMatch) =>
+    newMatch.location.includes(content)
   );
-  // useMemo ?
+
+  console.log("newMatches", newMatches);
+
   return (
     <View style={styles.container}>
       <View style={styles.modalContainer}>
@@ -57,13 +59,16 @@ const HomeScreen = () => {
         </Modal>
       </View>
       <SearchBar content={content} setContent={setContent} />
-
-      <FlatList
-        data={applicableDates}
-        renderItem={({ item }) => {
-          return <MatchCard {...item} />;
-        }}
-      />
+      {!newMatches.length ? (
+        <Text style={styles.title}>No matches found</Text>
+      ) : (
+        <FlatList
+          data={newMatches}
+          renderItem={({ item }) => {
+            return <MatchCard {...item} />;
+          }}
+        />
+      )}
     </View>
   );
 };

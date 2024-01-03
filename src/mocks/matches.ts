@@ -28,4 +28,22 @@ export const mockMatches: Match[] = [
     eachSide: 7,
     numberOfPlayers: 13,
   },
+  {
+    location: "luton",
+    placeName: "luton goals",
+    date: "2024-01-04",
+    time: "10:00:00",
+    price: 50,
+    eachSide: 5,
+    numberOfPlayers: 8,
+  },
+  {
+    location: "london",
+    placeName: "Brixton soccer centre",
+    date: "2024-01-04",
+    time: "10:00:00",
+    price: 50,
+    eachSide: 5,
+    numberOfPlayers: 8,
+  },
 ];

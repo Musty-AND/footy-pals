@@ -21,6 +21,7 @@ const SearchBar = ({ content, setContent }: SearchBarProps) => {
         }}
         placeholder="London"
         autoCorrect={false}
+        autoCapitalize="none"
       />
     </View>
   );
