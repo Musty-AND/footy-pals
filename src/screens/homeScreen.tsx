@@ -18,13 +18,15 @@ const HomeScreen = () => {
   const filteredMatches = useMemo(() => {
     return matches.filter((match) => {
       if (location && date)
-        match.location.toLowerCase().includes(location.toLowerCase()) &&
-          match.date === dayjs(date).format("YYYY-MM-DD");
+        return (
+          match.location.toLowerCase().includes(location.toLowerCase()) &&
+          match.date === dayjs(date).format("YYYY-MM-DD")
+        );
 
       if (location)
-        match.location.toLowerCase().includes(location.toLowerCase());
+        return match.location.toLowerCase().includes(location.toLowerCase());
 
-      if (date) match.date === dayjs(date).format("YYYY-MM-DD");
+      if (date) return match.date === dayjs(date).format("YYYY-MM-DD");
 
       return true;
     });
