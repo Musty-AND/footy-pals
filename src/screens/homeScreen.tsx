@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet, Button } from "react-native";
 import MatchCard from "../components/Match";
 import { useMatchContext } from "../context/MatchContext";
 import Calendar from "../components/Calendar";
@@ -14,6 +14,11 @@ const HomeScreen = () => {
   const [date, setDate] = useState<DateType>();
   const [open, setOpen] = useState<boolean>(false);
   const [location, setLocation] = useState("");
+
+  const resetSearch = () => {
+    setDate(null);
+    setLocation("");
+  };
 
   const filteredMatches = useMemo(() => {
     return matches.filter((match) => {
@@ -63,6 +68,7 @@ const HomeScreen = () => {
           />
         </Modal>
       </View>
+      <Button title="Reset Search" onPress={() => resetSearch()} />
       <SearchBar content={location} setContent={setLocation} />
       {!filteredMatches.length ? (
         <Text style={styles.title}>No matches found</Text>
