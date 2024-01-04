@@ -1,4 +1,11 @@
-import React, { Dispatch, ReactNode, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
+
+export type User = {
+  name?: string;
+  username: string;
+  email?: string;
+  contactNumber: string;
+};
 
 export type Match = {
   location: string;
@@ -6,6 +13,7 @@ export type Match = {
   date: string;
   time: string;
   price: number;
+  organiser: User;
   eachSide: 5 | 6 | 7;
   numberOfPlayers: number;
   meetingPoint?: string;

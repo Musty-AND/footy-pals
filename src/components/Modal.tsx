@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "pink",
   },
   buttonClose: {
     backgroundColor: "#2196F3",

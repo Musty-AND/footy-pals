@@ -68,6 +68,8 @@ const HomeScreen = () => {
         <Text style={styles.title}>No matches found</Text>
       ) : (
         <FlatList
+          style={styles.listContainer}
+          contentContainerStyle={styles.itemContainer}
           data={filteredMatches}
           renderItem={({ item }) => {
             return <MatchCard {...item} />;
@@ -82,13 +84,13 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    margin: 10,
   },
   modalContainer: {
     display: "flex",
     flexDirection: "row",
+    marginBottom: 10,
   },
-
   headingContainer: {
     flex: 1,
     display: "flex",
@@ -98,5 +100,12 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     textAlign: "center",
+  },
+  listContainer: {
+    marginVertical: 15,
+  },
+  itemContainer: {
+    gap: 15,
+    paddingBottom: 15,
   },
 });

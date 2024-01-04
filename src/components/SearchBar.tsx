@@ -28,6 +28,7 @@ export default SearchBar;
 
 const styles = StyleSheet.create({
   searchContainer: {
+    backgroundColor: "white",
     flexDirection: "row",
     borderWidth: 1,
     borderColor: "grey",
