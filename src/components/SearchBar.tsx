@@ -7,9 +7,6 @@ type SearchBarProps = {
   setContent: (value: string) => void;
 };
 const SearchBar = ({ content, setContent }: SearchBarProps) => {
-  // no ts error here because type is implied  by the "" I have entered below
-
-  console.log(content);
   return (
     <View style={styles.searchContainer}>
       <Feather name="search" size={24} color="black" />

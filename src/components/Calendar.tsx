@@ -9,9 +9,6 @@ type CalendarProps = {
 };
 
 const Calendar = ({ value, setValue }: CalendarProps) => {
-  // const [value, setValue] = useState<any>(dayjs());
-  // console.log("dayJS", dayjs());
-
   return (
     <View style={styles.container}>
       <DateTimePicker

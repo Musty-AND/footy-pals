@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import MatchCard from "../components/Match";
 import { useMatchContext } from "../context/MatchContext";
@@ -13,19 +13,22 @@ const HomeScreen = () => {
   const { matches } = useMatchContext();
   const [date, setDate] = useState<DateType>();
   const [open, setOpen] = useState<boolean>(false);
-  const [content, setContent] = useState("");
+  const [location, setLocation] = useState("");
 
-  const filteredChoice = date
-    ? matches.filter((match) => match.date === dayjs(date).format("YYYY-MM-DD"))
-    : matches;
+  const filteredMatches = useMemo(() => {
+    return matches.filter((match) => {
+      if (location && date)
+        match.location.toLowerCase().includes(location.toLowerCase()) &&
+          match.date === dayjs(date).format("YYYY-MM-DD");
 
-  console.log("Filtered Choices", filteredChoice);
+      if (location)
+        match.location.toLowerCase().includes(location.toLowerCase());
 
-  const newMatches = filteredChoice.filter((newMatch) =>
-    newMatch.location.includes(content)
-  );
+      if (date) match.date === dayjs(date).format("YYYY-MM-DD");
 
-  console.log("newMatches", newMatches);
+      return true;
+    });
+  }, [matches, date, location]);
 
   return (
     <View style={styles.container}>
@@ -58,12 +61,12 @@ const HomeScreen = () => {
           />
         </Modal>
       </View>
-      <SearchBar content={content} setContent={setContent} />
-      {!newMatches.length ? (
+      <SearchBar content={location} setContent={setLocation} />
+      {!filteredMatches.length ? (
         <Text style={styles.title}>No matches found</Text>
       ) : (
         <FlatList
-          data={newMatches}
+          data={filteredMatches}
           renderItem={({ item }) => {
             return <MatchCard {...item} />;
           }}
