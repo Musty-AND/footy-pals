@@ -13,6 +13,7 @@ export const mockMatches: Match[] = [
       contactNumber: "07123456789",
       username: "gtaylor",
     },
+    id: 1,
   },
   {
     location: "Manchester",
@@ -26,6 +27,7 @@ export const mockMatches: Match[] = [
       contactNumber: "07123456789",
       username: "gtaylor",
     },
+    id: 2,
   },
   {
     location: "Leeds",
@@ -39,6 +41,7 @@ export const mockMatches: Match[] = [
       contactNumber: "07123456789",
       username: "gtaylor",
     },
+    id: 3,
   },
   {
     location: "Luton",
@@ -52,6 +55,7 @@ export const mockMatches: Match[] = [
       contactNumber: "07123456789",
       username: "gtaylor",
     },
+    id: 4,
   },
   {
     location: "London",
@@ -65,6 +69,7 @@ export const mockMatches: Match[] = [
       contactNumber: "07123456789",
       username: "gtaylor",
     },
+    id: 5,
   },
   {
     location: "Leeds",
@@ -78,6 +83,7 @@ export const mockMatches: Match[] = [
       contactNumber: "07123456789",
       username: "gtaylor",
     },
+    id: 6,
   },
   {
     location: "Luton",
@@ -91,6 +97,7 @@ export const mockMatches: Match[] = [
       contactNumber: "07123456789",
       username: "gtaylor",
     },
+    id: 7,
   },
   {
     location: "London",
@@ -104,5 +111,6 @@ export const mockMatches: Match[] = [
       contactNumber: "07123456789",
       username: "gtaylor",
     },
+    id: 8,
   },
 ];

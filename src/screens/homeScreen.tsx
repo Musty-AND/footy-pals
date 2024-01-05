@@ -1,5 +1,12 @@
 import React, { useMemo, useState } from "react";
-import { View, Text, FlatList, StyleSheet, Button } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 import MatchCard from "../components/Match";
 import { useMatchContext } from "../context/MatchContext";
 import Calendar from "../components/Calendar";
@@ -9,7 +16,7 @@ import dayjs from "dayjs";
 import { DateType } from "react-native-ui-datepicker";
 import SearchBar from "../components/SearchBar";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }: any) => {
   const { matches } = useMatchContext();
   const [date, setDate] = useState<DateType>();
   const [open, setOpen] = useState<boolean>(false);
@@ -78,7 +85,18 @@ const HomeScreen = () => {
           contentContainerStyle={styles.itemContainer}
           data={filteredMatches}
           renderItem={({ item }) => {
-            return <MatchCard {...item} />;
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate({
+                    name: "Match Details",
+                    params: { id: item.id },
+                  });
+                }}
+              >
+                <MatchCard {...item} />
+              </TouchableOpacity>
+            );
           }}
         />
       )}

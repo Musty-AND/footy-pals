@@ -18,6 +18,7 @@ export type Match = {
   numberOfPlayers: number;
   meetingPoint?: string;
   rules?: string;
+  id: number;
 };
 
 export type MatchContextType = {

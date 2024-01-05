@@ -13,6 +13,7 @@ const MatchCard = ({
   price,
   numberOfPlayers,
   organiser,
+  id,
   ...rest
 }: Match) => {
   return (
