@@ -4,10 +4,11 @@ appId: com.example.app
     id: 'match-card-1'
 - assertVisible: '1'
 - tapOn: Go back
-- tapOn:
-    id: 'search-bar'
-- inputText: 'Luton'
-- hideKeyboard
+- runFlow:
+    file: subflows/subflow-enter-text.yaml
+    env:
+      TEXT_INPUT_ID: search-bar
+      TEXT: 'Luton'
 - assertNotVisible: 'match-card-1'
 - tapOn:
     id: 'match-card-4'
