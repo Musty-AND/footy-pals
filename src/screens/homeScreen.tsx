@@ -67,6 +67,9 @@ const HomeScreen = ({ navigation }: any) => {
         </Modal>
       </View>
       <Button title="Reset Search" onPress={() => resetSearch()} />
+      <TButton icon={<Feather name="feather" size={24} color="black" />} size="$6">
+        NEW TING
+      </TButton>
       <SearchBar content={location} setContent={setLocation} />
       {!filteredMatches.length ? (
         <Text style={styles.title}>No matches found</Text>
