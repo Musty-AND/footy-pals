@@ -9,7 +9,8 @@ appId: com.example.app
     env:
       TEXT_INPUT_ID: search-bar
       TEXT: 'Luton'
-- assertNotVisible: 'match-card-1'
+- assertNotVisible:
+    id: 'match-card-1'
 - tapOn:
     id: 'match-card-4'
 - assertVisible: '4'
