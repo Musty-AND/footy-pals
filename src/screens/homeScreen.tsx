@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import React, { useMemo, useState } from 'react';
 import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { DateType } from 'react-native-ui-datepicker';
+import { Button as TButton } from 'tamagui';
 
 import Calendar from '../components/Calendar';
 import MatchCard from '../components/Match';
