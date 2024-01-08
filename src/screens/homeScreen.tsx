@@ -58,7 +58,7 @@ const HomeScreen = ({ navigation }: any) => {
           </Text>
         </View>
         <Modal
-          heading="Choose Date"
+          heading='Choose Date'
           buttonText="Close Calendar"
           button={<Feather name="calendar" size={24} color="black" />}
           open={open}
@@ -66,16 +66,16 @@ const HomeScreen = ({ navigation }: any) => {
         >
           <Calendar
             value={date}
-            // same thing as lines 46-48
+            // Line below is the same as the 2 lines below that are not commented out
             // setValue={setValue}
             setValue={(date) => {
               setDate(date);
               setOpen(false);
             }}
           />
-        </Modal>
+      </Modal>
       </View>
-      <Button title="Reset Search" onPress={() => resetSearch()} />
+      <Button title='Reset Search' onPress={() => resetSearch()} />
       <SearchBar content={location} setContent={setLocation} />
       {!filteredMatches.length ? (
         <Text style={styles.title}>No matches found</Text>
