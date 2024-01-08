@@ -1,13 +1,15 @@
-import React, { useMemo, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity } from 'react-native';
-import MatchCard from '../components/Match';
-import { useMatchContext } from '../context/MatchContext';
-import Calendar from '../components/Calendar';
-import Modal from '../components/Modal';
 import { Feather } from '@expo/vector-icons';
 import dayjs from 'dayjs';
+import React, { useMemo, useState } from 'react';
+import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { DateType } from 'react-native-ui-datepicker';
+import { Button as TButton } from 'tamagui';
+
+import Calendar from '../components/Calendar';
+import MatchCard from '../components/Match';
+import Modal from '../components/Modal';
 import SearchBar from '../components/SearchBar';
+import { useMatchContext } from '../context/MatchContext';
 
 const HomeScreen = ({ navigation }: any) => {
   const { matches } = useMatchContext();
@@ -56,7 +58,7 @@ const HomeScreen = ({ navigation }: any) => {
           setOpen={setOpen}>
           <Calendar
             value={date}
-            // same thing as lines 46-48
+            // Line below is the same as the 2 lines below that are not commented out
             // setValue={setValue}
             setValue={(date) => {
               setDate(date);
@@ -66,6 +68,9 @@ const HomeScreen = ({ navigation }: any) => {
         </Modal>
       </View>
       <Button title="Reset Search" onPress={() => resetSearch()} />
+      <TButton icon={<Feather name="feather" size={24} color="black" />} size="$6">
+        NEW TING
+      </TButton>
       <SearchBar content={location} setContent={setLocation} />
       {!filteredMatches.length ? (
         <Text style={styles.title}>No matches found</Text>

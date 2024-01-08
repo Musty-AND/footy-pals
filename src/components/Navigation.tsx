@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/homeScreen";
 import SettingsScreen from "../screens/settingsScreen";
 import { NavigationContainer } from "@react-navigation/native";
-import { SafeAreaView, Button } from "react-native";
+import { SafeAreaView } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MatchDetailsScreen from "../screens/matchDetailsScreen";
 
