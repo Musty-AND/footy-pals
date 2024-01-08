@@ -1,30 +1,24 @@
-import React, { useMemo, useState } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  Button,
-  TouchableOpacity,
-} from "react-native";
-import MatchCard from "../components/Match";
-import { useMatchContext } from "../context/MatchContext";
-import Calendar from "../components/Calendar";
-import Modal from "../components/Modal";
-import { Feather } from "@expo/vector-icons";
-import dayjs from "dayjs";
-import { DateType } from "react-native-ui-datepicker";
-import SearchBar from "../components/SearchBar";
+import { Feather } from '@expo/vector-icons';
+import dayjs from 'dayjs';
+import React, { useMemo, useState } from 'react';
+import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { DateType } from 'react-native-ui-datepicker';
+
+import Calendar from '../components/Calendar';
+import MatchCard from '../components/Match';
+import Modal from '../components/Modal';
+import SearchBar from '../components/SearchBar';
+import { useMatchContext } from '../context/MatchContext';
 
 const HomeScreen = ({ navigation }: any) => {
   const { matches } = useMatchContext();
   const [date, setDate] = useState<DateType>();
   const [open, setOpen] = useState<boolean>(false);
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState('');
 
   const resetSearch = () => {
     setDate(null);
-    setLocation("");
+    setLocation('');
   };
 
   const filteredMatches = useMemo(() => {
@@ -32,13 +26,12 @@ const HomeScreen = ({ navigation }: any) => {
       if (location && date)
         return (
           match.location.toLowerCase().includes(location.toLowerCase()) &&
-          match.date === dayjs(date).format("YYYY-MM-DD")
+          match.date === dayjs(date).format('YYYY-MM-DD')
         );
 
-      if (location)
-        return match.location.toLowerCase().includes(location.toLowerCase());
+      if (location) return match.location.toLowerCase().includes(location.toLowerCase());
 
-      if (date) return match.date === dayjs(date).format("YYYY-MM-DD");
+      if (date) return match.date === dayjs(date).format('YYYY-MM-DD');
 
       return true;
     });
@@ -51,19 +44,17 @@ const HomeScreen = ({ navigation }: any) => {
           <Text
             style={{
               ...styles.title,
-              textAlign: "left",
-            }}
-          >
+              textAlign: 'left',
+            }}>
             Upcoming Matches
           </Text>
         </View>
         <Modal
-          heading='Choose Date'
+          heading="Choose Date"
           buttonText="Close Calendar"
           button={<Feather name="calendar" size={24} color="black" />}
           open={open}
-          setOpen={setOpen}
-        >
+          setOpen={setOpen}>
           <Calendar
             value={date}
             // Line below is the same as the 2 lines below that are not commented out
@@ -73,9 +64,9 @@ const HomeScreen = ({ navigation }: any) => {
               setOpen(false);
             }}
           />
-      </Modal>
+        </Modal>
       </View>
-      <Button title='Reset Search' onPress={() => resetSearch()} />
+      <Button title="Reset Search" onPress={() => resetSearch()} />
       <SearchBar content={location} setContent={setLocation} />
       {!filteredMatches.length ? (
         <Text style={styles.title}>No matches found</Text>
@@ -89,11 +80,10 @@ const HomeScreen = ({ navigation }: any) => {
               <TouchableOpacity
                 onPress={() => {
                   navigation.navigate({
-                    name: "Match Details",
+                    name: 'Match Details',
                     params: { id: item.id },
                   });
-                }}
-              >
+                }}>
                 <MatchCard {...item} />
               </TouchableOpacity>
             );
@@ -111,19 +101,19 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   modalContainer: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
     marginBottom: 10,
   },
   headingContainer: {
     flex: 1,
-    display: "flex",
-    justifyContent: "center",
+    display: 'flex',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 22,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   listContainer: {
     marginVertical: 15,
