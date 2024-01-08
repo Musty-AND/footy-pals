@@ -1,0 +1,16 @@
+appId: com.example.app
+---
+- tapOn:
+    id: 'match-card-1'
+- assertVisible: '1'
+- tapOn: Go back
+- tapOn:
+    id: 'search-bar'
+- inputText: 'Luton'
+- hideKeyboard
+- assertNotVisible: 'match-card-1'
+- tapOn:
+    id: 'match-card-4'
+- assertVisible: '4'
+- tapOn: Go back
+- tapOn: Reset Search
