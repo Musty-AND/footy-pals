@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { View, Text, Button } from "react-native";
-import { useMatchContext } from "../context/MatchContext";
+import React, { useContext } from 'react';
+import { useMatchContext } from '../context/MatchContext';
+import { View, Text, Button } from 'react-native';
 
 const MatchDetailsScreen = ({ route, navigation }: any) => {
   const { id } = route.params;
@@ -8,7 +8,7 @@ const MatchDetailsScreen = ({ route, navigation }: any) => {
 
   const selectedMatch = matches.find((match) => match.id === id);
 
-  console.log("bosh", selectedMatch);
+  console.log('bosh', selectedMatch);
   return (
     <View>
       <Text> Match Details</Text>
