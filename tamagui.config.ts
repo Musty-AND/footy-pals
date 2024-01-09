@@ -145,30 +145,32 @@ const tamaguiConfig = createTamagui({
       backgroundPress: color.purple4Light, // darker background on press
       backgroundHover: color.purple2Light, // lighter background on hover
       color: color.purple12Light,
+      borderColor: color.purple12Light,
     },
     light_Tile: {
       backgroundPress: color.gray4Light, // Darker background on press
       backgroundHover: color.gray2Light, // lighter background on hover
       borderColor: '#000',
+      shadowColor: '#000',
     },
     light_Numbers: {
       background: '#d2c4d5',
     },
     dark: {
-      background: '#000',
+      background: '#151515',
       color: '#fff',
     },
     dark_Button: {
-      background: color.purple11Light,
       backgroundPress: color.purple12Light, // darker background on press
       backgroundHover: color.purple10Light, // lighter background on hover
+      borderColor: color.purple10Light,
     },
     dark_Tile: {
-      background: color.purple11Light,
-      backgroundPress: color.gray12Dark, // darker background on press
-      backgroundHover: color.gray1Dark, // lighter background on hover
-      color: '#fff',
-      borderColor: '#000',
+      background: color.purple2Dark,
+      backgroundPress: color.purple1Dark, // darker background on press
+      backgroundHover: color.purple3Dark, // lighter background on hover
+      borderColor: color.purple11Light,
+      shadowColor: color.purple11Light,
     },
     dark_Numbers: {
       background: 'green',

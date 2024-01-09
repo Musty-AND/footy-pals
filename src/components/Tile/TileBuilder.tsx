@@ -49,11 +49,12 @@ export const TileFrame = styled(Stack, {
   context: TileContext,
   backgroundColor: '$background',
   flexDirection: 'column',
+
   borderTopColor: '$borderColor',
   borderTopWidth: 3,
   flex: 1,
-  shadowColor: '$color',
-  shadowOffset: { width: -2, height: 4 },
+  shadowColor: '$shadowColor',
+  shadowOffset: { width: 1, height: 2 },
   shadowOpacity: 0.2,
   shadowRadius: 3,
 

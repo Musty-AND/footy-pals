@@ -22,7 +22,7 @@ export const ButtonFrame = styled(Stack, {
   alignItems: 'center',
   justifyContent: 'center',
   flexDirection: 'row',
-  borderColor: '$color',
+  borderColor: '$borderColor',
   borderWidth: 1,
 
   hoverStyle: {
@@ -79,6 +79,7 @@ const ButtonIcon = (props: { children: any }) => {
     shift: -2,
   });
   const theme = useTheme();
+
   return cloneElement(props.children, {
     size: smaller.val * 0.5,
     color: theme.color.get(),

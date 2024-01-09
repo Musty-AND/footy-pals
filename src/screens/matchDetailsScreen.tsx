@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { View, Text, Button } from 'react-native';
+
 import { useMatchContext } from '../context/MatchContext';
 
 const MatchDetailsScreen = ({ route, navigation }: any) => {

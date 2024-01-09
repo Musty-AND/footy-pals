@@ -1,8 +1,9 @@
 import { Feather } from '@expo/vector-icons';
 import dayjs from 'dayjs';
 import React, { useMemo, useState } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import { DateType } from 'react-native-ui-datepicker';
+import { Stack, Text } from 'tamagui';
 
 import Button from '../components/Button';
 import Calendar from '../components/Calendar';
@@ -10,6 +11,7 @@ import Modal from '../components/Modal';
 import SearchBar from '../components/SearchBar';
 import MatchTile from '../components/Tile';
 import { useMatchContext } from '../context/MatchContext';
+import Icon from '../components/Icon';
 
 const HomeScreen = ({ navigation }: any) => {
   const { matches } = useMatchContext();
@@ -39,7 +41,7 @@ const HomeScreen = ({ navigation }: any) => {
   }, [matches, date, location]);
 
   return (
-    <View style={styles.container}>
+    <Stack backgroundColor="$background" paddingHorizontal="$sm" flex={1}>
       <View style={styles.modalContainer}>
         <View style={styles.headingContainer}>
           <Text
@@ -53,7 +55,7 @@ const HomeScreen = ({ navigation }: any) => {
         <Modal
           heading="Choose Date"
           buttonText="Close Calendar"
-          button={<Feather name="calendar" size={24} color="black" />}
+          button={<Icon icon={<Feather name="calendar" />} />}
           open={open}
           setOpen={setOpen}>
           <Calendar
@@ -96,7 +98,7 @@ const HomeScreen = ({ navigation }: any) => {
           }}
         />
       )}
-    </View>
+    </Stack>
   );
 };
 
@@ -104,6 +106,7 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
+    background: '$color',
     margin: 10,
     flex: 1,
   },
