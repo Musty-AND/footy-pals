@@ -1,11 +1,12 @@
-import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen from "../screens/homeScreen";
-import SettingsScreen from "../screens/settingsScreen";
-import { NavigationContainer } from "@react-navigation/native";
-import { SafeAreaView } from "react-native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import MatchDetailsScreen from "../screens/matchDetailsScreen";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
+import { SafeAreaView } from 'react-native';
+
+import HomeScreen from '../screens/homeScreen';
+import MatchDetailsScreen from '../screens/matchDetailsScreen';
+import SettingsScreen from '../screens/settingsScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();

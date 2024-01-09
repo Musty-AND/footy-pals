@@ -1,14 +1,15 @@
-import { useEffect } from "react";
-import Navigation from "./src/components/Navigation";
-import { MatchProvider } from "./src/context/MatchContext";
-import { TamaguiProvider } from "tamagui";
-import config from "./tamagui.config";
-import { useFonts } from "expo-font";
+import { useFonts } from 'expo-font';
+import { useEffect } from 'react';
+import { TamaguiProvider } from 'tamagui';
 
-export default function App() {
+import Navigation from './src/components/Navigation';
+import { MatchProvider } from './src/context/MatchContext';
+import config from './tamagui.config';
+
+const App = () => {
   const [loaded] = useFonts({
-    Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
-    InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
+    Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
+    InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
   });
 
   useEffect(() => {
@@ -22,10 +23,12 @@ export default function App() {
   }
 
   return (
-    <TamaguiProvider config={config} defaultTheme="dark">
+    <TamaguiProvider config={config} defaultTheme="light">
       <MatchProvider>
         <Navigation />
       </MatchProvider>
     </TamaguiProvider>
   );
-}
+};
+
+export default App;
