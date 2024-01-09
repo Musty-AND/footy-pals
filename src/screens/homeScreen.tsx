@@ -1,14 +1,14 @@
 import { Feather } from '@expo/vector-icons';
 import dayjs from 'dayjs';
 import React, { useMemo, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { DateType } from 'react-native-ui-datepicker';
-import { Button as TButton } from 'tamagui';
 
+import Button from '../components/Button';
 import Calendar from '../components/Calendar';
-import MatchCard from '../components/Match';
 import Modal from '../components/Modal';
 import SearchBar from '../components/SearchBar';
+import MatchTile from '../components/Tile';
 import { useMatchContext } from '../context/MatchContext';
 
 const HomeScreen = ({ navigation }: any) => {
@@ -67,10 +67,12 @@ const HomeScreen = ({ navigation }: any) => {
           />
         </Modal>
       </View>
-      <Button title="Reset Search" onPress={() => resetSearch()} />
-      <TButton icon={<Feather name="feather" size={24} color="black" />} size="$6">
-        NEW TING
-      </TButton>
+      <Button
+        text="Reset Search"
+        onPress={() => resetSearch()}
+        size="$md"
+        rightIcon={<Feather name="airplay" />}
+      />
       <SearchBar content={location} setContent={setLocation} />
       {!filteredMatches.length ? (
         <Text style={styles.title}>No matches found</Text>
@@ -81,15 +83,15 @@ const HomeScreen = ({ navigation }: any) => {
           data={filteredMatches}
           renderItem={({ item }) => {
             return (
-              <TouchableOpacity
+              <MatchTile
+                {...item}
                 onPress={() => {
                   navigation.navigate({
                     name: 'Match Details',
                     params: { id: item.id },
                   });
-                }}>
-                <MatchCard {...item} />
-              </TouchableOpacity>
+                }}
+              />
             );
           }}
         />
@@ -103,6 +105,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     margin: 10,
+    flex: 1,
   },
   modalContainer: {
     display: 'flex',

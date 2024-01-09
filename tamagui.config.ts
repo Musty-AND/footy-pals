@@ -1,18 +1,184 @@
-// the v2 config imports the css driver on web and react-native on native
+import {
+  blue,
+  blueDark,
+  gray,
+  grayDark,
+  green,
+  greenDark,
+  orange,
+  orangeDark,
+  pink,
+  pinkDark,
+  purple,
+  purpleDark,
+  red,
+  redDark,
+  yellow,
+  yellowDark,
+  whiteA,
+  blackA,
+} from '@tamagui/colors';
+import { Variable, createTamagui, createTokens } from 'tamagui';
 
-// for reanimated: @tamagui/config/v2-reanimated
+export const zIndex = {
+  0: 0,
+  1: 100,
+  2: 200,
+  3: 300,
+  4: 400,
+  5: 500,
+};
 
-// for react-native only: @tamagui/config/v2-native
+export const colorTokens = {
+  light: {
+    blue,
+    gray,
+    green,
+    orange,
+    pink,
+    purple,
+    red,
+    yellow,
+    whiteA,
+    blackA,
+  },
+  dark: {
+    blue: blueDark,
+    gray: grayDark,
+    green: greenDark,
+    orange: orangeDark,
+    pink: pinkDark,
+    purple: purpleDark,
+    red: redDark,
+    yellow: yellowDark,
+    whiteA,
+    blackA,
+  },
+};
 
-import { config } from '@tamagui/config/v2';
-import { createTamagui } from 'tamagui';
-const tamaguiConfig = createTamagui(config);
-// this makes typescript properly type everything based on the config
+export const darkColors = {
+  ...colorTokens.dark.blue,
+  ...colorTokens.dark.gray,
+  ...colorTokens.dark.green,
+  ...colorTokens.dark.orange,
+  ...colorTokens.dark.pink,
+  ...colorTokens.dark.purple,
+  ...colorTokens.dark.red,
+  ...colorTokens.dark.yellow,
+  ...colorTokens.dark.blackA,
+};
 
-type Conf = typeof tamaguiConfig;
+export const lightColors = {
+  ...colorTokens.light.blue,
+  ...colorTokens.light.gray,
+  ...colorTokens.light.green,
+  ...colorTokens.light.orange,
+  ...colorTokens.light.pink,
+  ...colorTokens.light.purple,
+  ...colorTokens.light.red,
+  ...colorTokens.light.yellow,
+  ...colorTokens.light.whiteA,
+};
 
+export const color = {
+  ...postfixObjKeys(lightColors, 'Light'),
+  ...postfixObjKeys(darkColors, 'Dark'),
+};
+
+function postfixObjKeys<A extends { [key: string]: Variable<string> | string }, B extends string>(
+  obj: A,
+  postfix: B,
+): {
+  [Key in `${keyof A extends string ? keyof A : never}${B}`]: Variable<string> | string;
+} {
+  return Object.fromEntries(Object.entries(obj).map(([k, v]) => [`${k}${postfix}`, v])) as any;
+}
+
+const tamaguiConfig = createTamagui({
+  tokens: createTokens({
+    size: {
+      sm: 38,
+      md: 46,
+      true: 46,
+      lg: 60,
+    },
+    space: {
+      sm: 15,
+      md: 20,
+      true: 20,
+      lg: 25,
+    },
+    radius: {
+      sm: 4,
+      md: 8,
+      true: 8,
+      lg: 12,
+    },
+    color,
+    zIndex: {
+      sm: 16,
+      md: 24,
+      true: 24,
+      lg: 32,
+    },
+    icon: {
+      sm: 16,
+      md: 24,
+      lg: 32,
+    },
+    fontWeight: {
+      1: 100,
+      2: 200,
+      3: 300,
+      4: 400,
+      true: 400,
+      7: 700,
+    },
+  }),
+  themes: {
+    light: {
+      background: '#fff',
+      color: '#000',
+    },
+    light_Button: {
+      background: color.purple3Light,
+      backgroundPress: color.purple4Light, // darker background on press
+      backgroundHover: color.purple2Light, // lighter background on hover
+      color: color.purple12Light,
+    },
+    light_Tile: {
+      backgroundPress: color.gray4Light, // Darker background on press
+      backgroundHover: color.gray2Light, // lighter background on hover
+      borderColor: '#000',
+    },
+    light_Numbers: {
+      background: '#d2c4d5',
+    },
+    dark: {
+      background: '#000',
+      color: '#fff',
+    },
+    dark_Button: {
+      background: color.purple11Light,
+      backgroundPress: color.purple12Light, // darker background on press
+      backgroundHover: color.purple10Light, // lighter background on hover
+    },
+    dark_Tile: {
+      background: color.purple11Light,
+      backgroundPress: color.gray12Dark, // darker background on press
+      backgroundHover: color.gray1Dark, // lighter background on hover
+      color: '#fff',
+      borderColor: '#000',
+    },
+    dark_Numbers: {
+      background: 'green',
+    },
+  },
+});
+
+type AppConfig = typeof tamaguiConfig;
 declare module 'tamagui' {
-  interface TamaguiCustomConfig extends Conf {}
+  interface TamaguiCustomConfig extends AppConfig {}
 }
 export default tamaguiConfig;
 // depending on if you chose tamagui, @tamagui/core, or @tamagui/web
