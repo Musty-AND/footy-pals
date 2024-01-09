@@ -1,5 +1,5 @@
 import { Feather } from '@expo/vector-icons';
-import { SizeTokens } from 'tamagui';
+import { SizeTokens, Text } from 'tamagui';
 
 import { MatchCreator, MatchInfo, Tile } from './TileBuilder';
 import { User } from '../../types';
@@ -49,9 +49,9 @@ const MatchTile = ({
           </Tile.Text>
         </MatchCreator>
         <Tile.Numbers>
-          <Tile.Text>
+          <Text color="$color">
             {numberOfPlayers}/{eachSide * 2}
-          </Tile.Text>
+          </Text>
         </Tile.Numbers>
       </MatchInfo>
     </Tile>
