@@ -1,11 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Stack, Text } from 'tamagui';
+
+import Button from '../components/Button';
+import { useThemeContext } from '../context/ThemeContext';
 
 const SettingsScreen = () => {
+  const { toggleTheme } = useThemeContext();
+
   return (
-    <View>
+    <Stack backgroundColor="$background" paddingHorizontal="$sm" flex={1}>
       <Text> Settings Screen</Text>
-    </View>
+      <Button text="change theme???" onPress={toggleTheme} />
+    </Stack>
   );
 };
 

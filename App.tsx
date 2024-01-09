@@ -1,10 +1,10 @@
 import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
-import { TamaguiProvider } from 'tamagui';
 
 import Navigation from './src/components/Navigation';
 import { MatchProvider } from './src/context/MatchContext';
-import config from './tamagui.config';
+import { TamaguiProvider } from './src/context/TamaguiContext';
+import { ThemeProvider } from './src/context/ThemeContext';
 
 const App = () => {
   const [loaded] = useFonts({
@@ -23,11 +23,13 @@ const App = () => {
   }
 
   return (
-    <TamaguiProvider config={config} defaultTheme="light">
-      <MatchProvider>
-        <Navigation />
-      </MatchProvider>
-    </TamaguiProvider>
+    <ThemeProvider>
+      <TamaguiProvider>
+        <MatchProvider>
+          <Navigation />
+        </MatchProvider>
+      </TamaguiProvider>
+    </ThemeProvider>
   );
 };
 

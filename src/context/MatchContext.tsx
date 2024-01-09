@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
-import { MatchContextType, Match } from "../types";
-import { mockMatches } from "../mocks/matches";
-// import { useMatches } from "../hooks/useMatches";
+import React, { useContext, useState, useEffect } from 'react';
+
+import { mockMatches } from '../mocks/matches';
+import { MatchContextType, Match } from '../types';
 
 const MatchContext = React.createContext({} as MatchContextType);
 
@@ -19,15 +19,11 @@ export const MatchProvider = ({ children }: props) => {
     if (!matches.length) fetchData();
   }, []);
 
-  return (
-    <MatchContext.Provider value={{ matches, setMatches }}>
-      {children}
-    </MatchContext.Provider>
-  );
+  return <MatchContext.Provider value={{ matches, setMatches }}>{children}</MatchContext.Provider>;
 };
 
 export const useMatchContext = () => {
   const context = useContext(MatchContext);
-  if (!context) throw new Error("Match context must be used within Provider");
+  if (!context) throw new Error('Match context must be used within Provider');
   return context;
 };

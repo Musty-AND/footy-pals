@@ -1,6 +1,23 @@
 import { Feather } from '@expo/vector-icons';
 import React from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
+import { Stack, styled, Input } from 'tamagui';
+
+import Icon from './Icon';
+
+export const SearchBarContainer = styled(Stack, {
+  backgroundColor: '$background',
+  borderColor: '$color',
+  alignItems: 'center',
+  flexDirection: 'row',
+  flex: 1,
+  borderWidth: 1,
+  borderRadius: 10,
+  paddingHorizontal: 10,
+
+  focusStyle: {
+    borderWidth: 2,
+  },
+});
 
 type SearchBarProps = {
   content: string;
@@ -8,38 +25,25 @@ type SearchBarProps = {
 };
 const SearchBar = ({ content, setContent }: SearchBarProps) => {
   return (
-    <View style={styles.searchContainer}>
-      <Feather name="search" size={24} color="black" />
-      <TextInput
+    <SearchBarContainer>
+      <Icon icon={<Feather name="search" size={24} />} />
+      <Input
         value={content}
-        style={styles.input}
         onChangeText={(text) => {
           setContent(text);
         }}
         placeholder="London"
         autoCorrect={false}
         autoCapitalize="none"
+        color="$color"
+        fontFamily="$body"
+        borderColor="$color"
+        borderWidth={0}
+        paddingLeft={10}
+        paddingRight={20}
       />
-    </View>
+    </SearchBarContainer>
   );
 };
 
 export default SearchBar;
-
-const styles = StyleSheet.create({
-  searchContainer: {
-    marginTop: 15,
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    borderWidth: 1,
-    borderColor: 'grey',
-    borderRadius: 15,
-    display: 'flex',
-    alignItems: 'center',
-    padding: 10,
-  },
-  input: {
-    fontSize: 18,
-    marginLeft: 10,
-  },
-});

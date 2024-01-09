@@ -18,7 +18,7 @@ import {
   whiteA,
   blackA,
 } from '@tamagui/colors';
-import { Variable, createTamagui, createTokens } from 'tamagui';
+import { Variable, createFont, createTamagui, createTokens } from 'tamagui';
 
 export const zIndex = {
   0: 0,
@@ -137,15 +137,16 @@ const tamaguiConfig = createTamagui({
   }),
   themes: {
     light: {
+      name: 'light',
       background: '#fff',
       color: '#000',
     },
     light_Button: {
-      background: color.purple3Light,
-      backgroundPress: color.purple4Light, // darker background on press
-      backgroundHover: color.purple2Light, // lighter background on hover
-      color: color.purple12Light,
-      borderColor: color.purple12Light,
+      background: '#000',
+      backgroundPress: '#00000095', // darker background on press
+      backgroundHover: '#00000095', // lighter background on hover
+      color: '#fff',
+      borderColor: '#000',
     },
     light_Tile: {
       backgroundPress: color.gray4Light, // Darker background on press
@@ -158,11 +159,13 @@ const tamaguiConfig = createTamagui({
     },
     dark: {
       background: '#151515',
+      name: 'dark',
       color: '#fff',
     },
     dark_Button: {
-      backgroundPress: color.purple12Light, // darker background on press
-      backgroundHover: color.purple10Light, // lighter background on hover
+      background: color.purple2Dark,
+      backgroundPress: color.purple1Dark, // darker background on press
+      backgroundHover: color.purple3Dark, // lighter background on hover
       borderColor: color.purple10Light,
     },
     dark_Tile: {
@@ -175,6 +178,25 @@ const tamaguiConfig = createTamagui({
     dark_Numbers: {
       background: 'green',
     },
+  },
+  fonts: {
+    body: createFont({
+      family: 'Arial',
+      size: {
+        1: 12,
+        2: 14,
+        3: 15,
+      },
+      lineHeight: {
+        // 1 will be 22
+        2: 22,
+      },
+      weight: {
+        1: '300',
+        // 2 will be 300
+        3: '600',
+      },
+    }),
   },
 });
 
