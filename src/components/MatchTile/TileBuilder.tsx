@@ -54,7 +54,7 @@ export const TileFrame = styled(Stack, {
   borderTopWidth: 3,
   flex: 1,
   shadowColor: '$shadowColor',
-  shadowOffset: { width: 1, height: 2 },
+  shadowOffset: { width: 0, height: 1 },
   shadowOpacity: 0.2,
   shadowRadius: 3,
 

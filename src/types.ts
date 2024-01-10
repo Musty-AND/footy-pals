@@ -26,6 +26,11 @@ export type MatchContextType = {
   setMatches: Dispatch<SetStateAction<Match[]>>;
 };
 
+export type ThemeContextType = {
+  isDarkTheme: boolean;
+  toggleTheme: () => void;
+};
+
 export type Modal = {
   heading: string;
   buttonText: string;

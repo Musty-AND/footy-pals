@@ -1,20 +1,21 @@
 import { Feather } from '@expo/vector-icons';
 import dayjs from 'dayjs';
 import React, { useMemo, useState } from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import { DateType } from 'react-native-ui-datepicker';
 import { Stack, Text } from 'tamagui';
 
 import Button from '../components/Button';
 import Calendar from '../components/Calendar';
+import Icon from '../components/Icon';
+import MatchTile from '../components/MatchTile';
 import Modal from '../components/Modal';
 import SearchBar from '../components/SearchBar';
-import MatchTile from '../components/Tile';
 import { useMatchContext } from '../context/MatchContext';
-import Icon from '../components/Icon';
 
 const HomeScreen = ({ navigation }: any) => {
   const { matches } = useMatchContext();
+
   const [date, setDate] = useState<DateType>();
   const [open, setOpen] = useState<boolean>(false);
   const [location, setLocation] = useState('');
@@ -42,16 +43,18 @@ const HomeScreen = ({ navigation }: any) => {
 
   return (
     <Stack backgroundColor="$background" paddingHorizontal="$sm" flex={1}>
-      <View style={styles.modalContainer}>
-        <View style={styles.headingContainer}>
-          <Text
-            style={{
-              ...styles.title,
-              textAlign: 'left',
-            }}>
-            Upcoming Matches
-          </Text>
-        </View>
+      <Stack
+        flexDirection="row"
+        marginBottom={10}
+        alignItems="center"
+        justifyContent="space-between">
+        <Text
+          style={{
+            ...styles.title,
+            textAlign: 'left',
+          }}>
+          Upcoming Matches
+        </Text>
         <Modal
           heading="Choose Date"
           buttonText="Close Calendar"
@@ -68,19 +71,22 @@ const HomeScreen = ({ navigation }: any) => {
             }}
           />
         </Modal>
-      </View>
-      <Button
-        text="Reset Search"
-        onPress={() => resetSearch()}
-        size="$md"
-        rightIcon={<Feather name="airplay" />}
-      />
-      <SearchBar content={location} setContent={setLocation} />
+      </Stack>
+      <Stack flexDirection="row" alignItems="center" justifyContent="center" gap={5}>
+        <SearchBar content={location} setContent={setLocation} />
+        <Button
+          text="Reset"
+          onPress={() => resetSearch()}
+          size="$md"
+          rightIcon={<Feather name="rotate-ccw" />}
+        />
+      </Stack>
       {!filteredMatches.length ? (
         <Text style={styles.title}>No matches found</Text>
       ) : (
         <FlatList
           style={styles.listContainer}
+          showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.itemContainer}
           data={filteredMatches}
           renderItem={({ item }) => {
@@ -105,21 +111,6 @@ const HomeScreen = ({ navigation }: any) => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    background: '$color',
-    margin: 10,
-    flex: 1,
-  },
-  modalContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginBottom: 10,
-  },
-  headingContainer: {
-    flex: 1,
-    display: 'flex',
-    justifyContent: 'center',
-  },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
@@ -127,6 +118,7 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     marginVertical: 15,
+    padding: 1,
   },
   itemContainer: {
     gap: 15,

@@ -56,8 +56,6 @@ export const ButtonFrame = styled(Stack, {
   },
 });
 
-type ButtonProps = GetProps<typeof ButtonFrame>;
-
 export const ButtonText = styled(Text, {
   name: 'ButtonText',
   context: ButtonContext,
