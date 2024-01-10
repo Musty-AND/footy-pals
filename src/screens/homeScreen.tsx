@@ -82,6 +82,7 @@ const HomeScreen = ({ navigation }: any) => {
           renderItem={({ item }) => {
             return (
               <TouchableOpacity
+                testID={`match-card-${item.id}`}
                 onPress={() => {
                   navigation.navigate({
                     name: 'Match Details',

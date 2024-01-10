@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Text, TextInput } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import React, { useState } from 'react';
+import { View, StyleSheet, Text, TextInput } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 type SearchBarProps = {
   content: string;
@@ -19,6 +19,7 @@ const SearchBar = ({ content, setContent }: SearchBarProps) => {
         placeholder="London"
         autoCorrect={false}
         autoCapitalize="none"
+        testID="search-bar"
       />
     </View>
   );
@@ -28,13 +29,13 @@ export default SearchBar;
 
 const styles = StyleSheet.create({
   searchContainer: {
-    backgroundColor: "white",
-    flexDirection: "row",
+    backgroundColor: 'white',
+    flexDirection: 'row',
     borderWidth: 1,
-    borderColor: "grey",
+    borderColor: 'grey',
     borderRadius: 15,
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     padding: 10,
   },
   input: {

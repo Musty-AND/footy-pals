@@ -1,0 +1,8 @@
+appId: com.example.app
+---
+- tapOn:
+    id: 'settings-tab'
+- assertVisible: 'Settings Screen'
+- tapOn:
+    id: 'home-tab'
+- assertVisible: 'Reset Search'

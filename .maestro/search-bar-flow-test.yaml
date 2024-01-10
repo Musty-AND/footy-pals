@@ -1,0 +1,18 @@
+appId: com.example.app
+---
+- tapOn:
+    id: 'match-card-1'
+- assertVisible: '1'
+- tapOn: Go back
+- runFlow:
+    file: subflows/subflow-enter-text.yaml
+    env:
+      TEXT_INPUT_ID: search-bar
+      TEXT: 'Luton'
+- assertNotVisible:
+    id: 'match-card-1'
+- tapOn:
+    id: 'match-card-4'
+- assertVisible: '4'
+- tapOn: Go back
+- tapOn: Reset Search

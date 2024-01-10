@@ -1,0 +1,17 @@
+appId: com.example.app
+---
+- tapOn:
+    id: 'open-modal-button'
+- assertVisible: 'Choose Date'
+- tapOn: 10
+- assertNotVisible:
+    id: 'match-card-1'
+- assertVisible:
+    id: 'match-card-2'
+- tapOn:
+    id: 'match-card-2'
+- assertVisible: '2'
+- tapOn: Go back
+- tapOn: Reset Search
+- assertVisible:
+    id: 'match-card-1'
